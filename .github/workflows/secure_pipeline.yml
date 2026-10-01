@@ -1,0 +1,45 @@
+name: Secure MLOps Pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  security-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download Dataset
+        run: python download_data.py
+
+      - name: Validate Dataset
+        run: python src/validate_data.py
+
+      - name: Train Model
+        run: python src/train.py
+
+      - name: Run Automated Tests
+        run: python -m pytest -v
+
+      - name: Secret Security Check
+        run: python security_check.py
+
+      - name: Bandit Security Scan
+        run: bandit -r src api -q
+
+      - name: Dependency Vulnerability Scan
+        run: pip-audit
+
+      - name: Build Docker Image
+        run: docker build -t secure-mlops-pipeline:latest .

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Rice AI | MLOps</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="page">
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">AI</div>
+            <div>
+                <h1>Secure Rice AI</h1>
+                <p>Secure MLOps Prediction System</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <a href="/docs" target="_blank">API Docs</a>
+            <div class="status"><span></span> API Online</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div>
+                <p class="eyebrow">DSP MICRO PROJECT · 22AI73</p>
+                <h2>Secure Rice Grain Classification</h2>
+                <p class="hero-text">
+                    Submit a structured JSON request containing seven rice-grain
+                    measurements. The validated input is sent to the Random Forest model.
+                </p>
+            </div>
+            <div class="model-badge">
+                <strong>Random Forest</strong>
+                <span>91.34% test accuracy</span>
+            </div>
+        </section>
+
+        <div class="workspace">
+            <section class="card request-card">
+                <div class="card-heading">
+                    <div>
+                        <div class="title-row"><h3>Prediction Request</h3><span class="badge">JSON</span></div>
+                        <p>Structured input sent to <code>POST /predict</code></p>
+                    </div>
+                    <div class="shield">✓</div>
+                </div>
+
+                <div class="samples">
+                    <span>Quick samples:</span>
+                    <button type="button" class="sample-btn" id="cammeoBtn">Cammeo sample</button>
+                    <button type="button" class="sample-btn" id="osmancikBtn">Osmancik sample</button>
+                    <button type="button" class="sample-btn" id="clearBtn">Clear</button>
+                </div>
+
+                <textarea id="jsonInput" spellcheck="false">{
+  "Area": 15231,
+  "Perimeter": 525.578979,
+  "Major_Axis_Length": 229.749878,
+  "Minor_Axis_Length": 85.093788,
+  "Eccentricity": 0.928882,
+  "Convex_Area": 15617,
+  "Extent": 0.572896
+}</textarea>
+
+                <div id="jsonStatus" class="json-status">Ready for prediction</div>
+
+                <button id="predictBtn" class="predict-btn" type="button">
+                    <span>Run Secure Prediction</span>
+                    <span class="arrow">→</span>
+                </button>
+
+                <div id="errorBox" class="message error hidden"></div>
+            </section>
+
+            <section class="card result-card">
+                <div class="card-heading">
+                    <div>
+                        <h3>Prediction Result</h3>
+                        <p>Response returned by the model API</p>
+                    </div>
+                    <div class="result-dot"></div>
+                </div>
+
+                <div id="resultEmpty" class="result-empty">
+                    <div class="result-icon">✦</div>
+                    <h4>Ready for prediction</h4>
+                    <p>Submit the JSON request to see the model response.</p>
+                </div>
+
+                <div id="resultContent" class="hidden">
+                    <p class="result-label">Predicted Variety</p>
+                    <div id="prediction" class="prediction">—</div>
+
+                    <div class="response-box">
+                        <div class="response-head">
+                            <span>API Response</span>
+                            <span id="statusCode" class="status-code">200 OK</span>
+                        </div>
+                        <pre id="responseBody">{}</pre>
+                    </div>
+
+                    <div class="validation-note">
+                        <span>✓</span>
+                        Request passed API validation and reached the model.
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="security">
+            <div class="section-title">
+                <p class="eyebrow">SECURITY LAYER</p>
+                <h3>Security controls in the prototype</h3>
+            </div>
+            <div class="security-grid">
+                <div class="security-item">
+                    <div class="security-icon">✓</div>
+                    <div><strong>Input Validation</strong><span>Invalid values rejected before prediction</span></div>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon">✓</div>
+                    <div><strong>Data Validation</strong><span>Dataset checked before training</span></div>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon">✓</div>
+                    <div><strong>Code & Dependency Checks</strong><span>Security checks can run in CI</span></div>
+                </div>
+                <div class="security-item">
+                    <div class="security-icon">✓</div>
+                    <div><strong>Container Hardening</strong><span>Non-root container configuration</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>Secure MLOps Pipeline for AI Model Deployment</span>
+        <span>Data Security & Privacy · DSCE · 2026–27</span>
+    </footer>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

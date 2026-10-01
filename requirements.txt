@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn
+joblib
+fastapi
+uvicorn
+ucimlrepo
+pytest
+httpx
+bandit
+pip-audit

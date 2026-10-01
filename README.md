@@ -27,7 +27,8 @@ python src/train.py
 uvicorn api.app:app --reload
 ```
 
-Open http://127.0.0.1:8000/docs
+Open http://127.0.0.1:8000/
+
 
 ## Dataset
 UCI Rice (Cammeo and Osmancik), dataset ID 545.
